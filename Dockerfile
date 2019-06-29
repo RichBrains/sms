@@ -11,6 +11,7 @@ RUN echo "http://dl-4.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositor
         php7 \
         nginx \
         mysql \
+	mysql-client \
 	supervisor \
         php7-dom \
         php7-ctype \
@@ -41,7 +42,13 @@ RUN echo "http://dl-4.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositor
         php7-tokenizer \
         php7-simplexml \
         php7-xmlwriter \
+        php7-pecl-memcached \
+        php7-memcached \
+        php7-redis \
+        openjdk7-jre \
+        ttf-freefont \
  && rm -rf /var/cache/apk/*
+
 
 COPY php.ini       /etc/php7/conf.d/50-setting.ini
 COPY php-fpm.conf  /etc/php7/php-fpm.conf
