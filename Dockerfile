@@ -47,6 +47,7 @@ RUN echo "http://dl-4.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositor
         php7-redis \
         openjdk7-jre \
         ttf-freefont \
+        ghostscript \
  && rm -rf /var/cache/apk/*
 
 
