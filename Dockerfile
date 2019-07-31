@@ -3,8 +3,7 @@ FROM alpine:3.9
 
 RUN addgroup www-data && adduser -S -D -G www-data www-data
 
-RUN echo "http://dl-4.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories \
- && apk --update add \
+RUN  apk --update add \
         bash \
         git \
         curl \
