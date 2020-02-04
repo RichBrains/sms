@@ -1,6 +1,5 @@
 FROM alpine:3.9
 
-
 RUN addgroup www-data && adduser -S -D -G www-data www-data
 
 RUN  apk --update add \
@@ -8,15 +7,12 @@ RUN  apk --update add \
         git \
         curl \
         php7 \
-        nginx \
         mysql \
-	mysql-client \
-	supervisor \
+    	mysql-client \
         php7-dom \
         php7-ctype \
         php7-curl \
         php7-exif \
-        php7-fpm \
         php7-gd \
         php7-intl \
         php7-json \
@@ -47,22 +43,9 @@ RUN  apk --update add \
         openjdk7-jre \
         ttf-freefont \
         ghostscript \
+        wkhtmltopdf \
  && rm -rf /var/cache/apk/*
 
-
 COPY php.ini       /etc/php7/conf.d/50-setting.ini
-COPY php-fpm.conf  /etc/php7/php-fpm.conf
 
 ONBUILD COPY . /var/www
-
-#RUN ln -s /usr/bin/php7 /usr/bin/php
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer&& \
-    mkdir -p /run/nginx
-
-COPY ./init.sh /
-COPY ./default.conf /etc/nginx/conf.d/default.conf
-RUN chmod +x /init.sh
-
-EXPOSE 80
-
-ENTRYPOINT [ "/init.sh" ]
