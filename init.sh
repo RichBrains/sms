@@ -6,5 +6,5 @@ php app/console cache:warmup --env=prod
 chmod 777 app/cache/ -R
 php-fpm7 -F &
 nginx -g 'daemon off;' &
-supervisord -c /etc/supervisor/conf/supervisord.conf &
+#supervisord -c /etc/supervisor/conf/supervisord.conf &
 tail -f /dev/null
