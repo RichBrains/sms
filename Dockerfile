@@ -44,6 +44,9 @@ RUN  apk --update add \
         ttf-freefont \
         ghostscript \
         wkhtmltopdf \
+        poppler \
+        poppler-utils \
+        
  && rm -rf /var/cache/apk/*
 
 COPY php.ini       /etc/php7/conf.d/50-setting.ini
