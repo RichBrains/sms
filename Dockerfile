@@ -46,6 +46,7 @@ RUN  apk --update add \
         wkhtmltopdf \
         poppler \
         poppler-utils \
+        p7zip \
         
  && rm -rf /var/cache/apk/*
 
