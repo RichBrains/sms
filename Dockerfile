@@ -49,6 +49,16 @@ RUN  apk --update add \
         p7zip \
         
  && rm -rf /var/cache/apk/*
+ 
+ 
+ENV MUSL_LOCALE_DEPS cmake make musl-dev gcc gettext-dev libintl
+ENV MUSL_LOCPATH /usr/share/i18n/locales/musl
+COPY locales /tmp/locales
+RUN apk add --no-cache \
+    $MUSL_LOCALE_DEPS \
+    && cd /tmp/locales \
+      && cmake -DLOCALE_PROFILE=OFF -D CMAKE_INSTALL_PREFIX:PATH=/usr . && make && make install \
+      && cd .. && rm -r /tmp/locales
 
 COPY php.ini       /etc/php7/conf.d/50-setting.ini
 
